@@ -1524,6 +1524,11 @@ export declare const Pill: BoxComponent<PillOwnProps, 'strong'>
 
 export type PopoverStatelessProps = BoxProps<'div'>
 
+export type PopoverRef = {
+  open: () => void
+  close: () => void
+}
+
 export interface PopoverProps {
   /**
    * The position the Popover is on. Smart positioning might override this.
@@ -1553,10 +1558,14 @@ export interface PopoverProps {
   children:
     | ((props: {
         toggle: () => void
-        getRef: (ref: React.RefObject<HTMLElement>) => void
+        getRef: (ref: React.RefObject<PopoverRef>) => void
         isShown: boolean
       }) => React.ReactNode)
     | React.ReactNode
+  /**
+   * Pass a ref to Popover.
+   */
+  ref?: React.RefObject<PopoverRef>
   /**
    * The display property passed to the Popover card.
    */
